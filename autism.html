@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>孤独症谱系分类页 — 小螺号康复精选</title>
+<title>🌟 孤独症谱系 — 小螺号康复精选</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐚</text></svg>">
 <style>
-/* ===== 变量 ===== */
 :root {
   --primary: #C2185B;
   --primary-light: #E91E8C;
@@ -22,348 +21,82 @@
   --shadow: 0 2px 12px rgba(0,0,0,.08);
   --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-}
-
-/* ===== 顶栏 ===== */
-.site-header {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: #fff;
-  padding: 0 24px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow);
-}
-.header-inner {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  height: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-}
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.site-header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+.header-inner { display: flex; align-items: center; gap: 20px; height: 60px; max-width: 1200px; margin: 0 auto; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-size: 18px; font-weight: 700; }
 .logo svg { flex-shrink: 0; }
-.header-nav {
-  display: flex;
-  gap: 4px;
-  flex: 1;
-}
-.header-nav a {
-  color: rgba(255,255,255,.85);
-  text-decoration: none;
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 500;
-  transition: all .2s;
-}
+.header-nav { display: flex; gap: 4px; flex: 1; }
+.header-nav a { color: rgba(255,255,255,.85); text-decoration: none; padding: 6px 14px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: all .2s; }
 .header-nav a:hover { background: rgba(255,255,255,.2); color: #fff; }
 .header-nav a.active { background: rgba(255,255,255,.25); color: #fff; font-weight: 700; }
-.header-stats {
-  display: flex;
-  gap: 16px;
-  font-size: 13px;
-  opacity: .9;
-}
-
-/* ===== 统计条 ===== */
-.stats-bar {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 12px 24px;
-}
-.stats-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.stat-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-}
+.header-stats { display: flex; gap: 16px; font-size: 13px; opacity: .9; }
+.stats-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 24px; }
+.stats-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 12px; flex-wrap: wrap; }
+.stat-pill { display: flex; align-items: center; gap: 6px; padding: 4px 14px; border-radius: 20px; font-size: 13px; }
 .stat-num { font-weight: 800; font-size: 16px; }
 .stat-label { color: var(--text-muted); }
-
-/* ===== 主布局 ===== */
 .container { max-width: 1200px; margin: 0 auto; }
-.content-grid {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 0;
-  min-height: calc(100vh - 120px);
-}
-
-/* ===== 侧边栏 ===== */
-.sidebar {
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  padding: 20px 0;
-  position: sticky;
-  top: 60px;
-  height: calc(100vh - 60px);
-  overflow-y: auto;
-}
+.content-grid { display: grid; grid-template-columns: 220px 1fr; gap: 0; min-height: calc(100vh - 120px); }
+.sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 20px 0; position: sticky; top: 60px; height: calc(100vh - 60px); overflow-y: auto; }
 .sidebar-section { padding: 0 16px 20px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
 .sidebar-section:last-child { border-bottom: none; }
-.sidebar-title {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  margin-bottom: 10px;
-}
+.sidebar-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
 .sidebar-nav { list-style: none; }
 .sidebar-nav li { margin-bottom: 2px; }
-.sidebar-nav a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  color: var(--text-muted);
-  font-size: 14px;
-  transition: all .2s;
-}
+.sidebar-nav a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: var(--radius-sm); text-decoration: none; color: var(--text-muted); font-size: 14px; transition: all .2s; }
 .sidebar-nav a:hover { background: var(--primary-bg); color: var(--primary); }
 .sidebar-nav a.active { background: var(--primary-bg); color: var(--primary); font-weight: 700; }
-.badge {
-  background: var(--primary-bg);
-  color: var(--primary);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 1px 7px;
-  border-radius: 10px;
-  margin-left: auto;
-}
+.badge { background: var(--primary-bg); color: var(--primary); font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 10px; margin-left: auto; }
 .score-legend { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
 .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
 .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .sidebar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.8; }
 .source-list { display: flex; flex-direction: column; gap: 4px; }
 .source-item { font-size: 13px; color: var(--text-muted); }
-
-/* ===== 文章区 ===== */
 .articles-area { padding: 24px 28px; }
-.articles-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
+.articles-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
 .section-title { font-size: 20px; font-weight: 700; color: var(--text); }
 .articles-controls { display: flex; gap: 10px; align-items: center; }
-.search-input {
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  width: 220px;
-  outline: none;
-  transition: border-color .2s;
-}
+.search-input { padding: 8px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; width: 220px; outline: none; transition: border-color .2s; }
 .search-input:focus { border-color: var(--primary); }
-.filter-select {
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  outline: none;
-  background: #fff;
-  cursor: pointer;
-}
-.subsection-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  margin-bottom: 14px;
-  margin-top: 0;
-}
-
-/* ===== 日期分组 ===== */
+.filter-select { padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; outline: none; background: #fff; cursor: pointer; }
+.subsection-title { font-size: 14px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 14px; margin-top: 0; }
 .date-group { margin-bottom: 28px; }
-.date-label-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.date-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--primary);
-  white-space: nowrap;
-}
-.date-label-row::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+.date-label-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.date-label { font-size: 13px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+.date-label-row::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .date-count { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
 .date-articles { display: flex; flex-direction: column; gap: 12px; }
-
-/* ===== 文章卡片 ===== */
-.article-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  transition: box-shadow .2s, transform .2s;
-  position: relative;
-  overflow: hidden;
-}
+.article-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; transition: box-shadow .2s, transform .2s; position: relative; overflow: hidden; }
 .article-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-.article-card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, var(--primary), var(--accent));
-  border-radius: 0 2px 2px 0;
-}
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  gap: 10px;
-}
-.cat-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-}
+.article-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--primary), var(--accent)); border-radius: 0 2px 2px 0; }
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 10px; }
+.cat-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
 .cat-articulation { background: #E3F2FD; color: #1565C0; }
 .cat-language { background: #E8F5E9; color: #2E7D32; }
 .cat-hearing { background: #FFF3E0; color: #E65100; }
 .cat-autism { background: #F3E5F5; color: #7B1FA2; }
-.score-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 10px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 800;
-}
+.score-badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 10px; font-size: 13px; font-weight: 800; }
 .score-top { background: #FFEBEE; color: #C62828; }
 .score-high { background: #FFF3E0; color: #E65100; }
 .score-mid { background: #E8F5E9; color: #2E7D32; }
-.card-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
+.card-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; line-height: 1.5; }
 .card-title a { color: var(--text); text-decoration: none; transition: color .2s; }
 .card-title a:hover { color: var(--primary); }
-.card-summary {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.card-reason {
-  background: var(--primary-bg);
-  border-left: 3px solid var(--primary);
-  padding: 8px 12px;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 13px;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--text-muted);
-  padding-top: 8px;
-  border-top: 1px solid var(--border);
-}
-.card-scores {
-  display: flex;
-  gap: 6px;
-  margin: 8px 0;
-  flex-wrap: wrap;
-}
-.score-dim {
-  background: #f5f5f5;
-  padding: 1px 8px;
-  border-radius: 8px;
-  font-size: 11px;
-  color: var(--text-muted);
-}
+.card-summary { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-reason { background: var(--primary-bg); border-left: 3px solid var(--primary); padding: 8px 12px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; color: var(--text); margin-bottom: 10px; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-muted); padding-top: 8px; border-top: 1px solid var(--border); }
+.card-scores { display: flex; gap: 6px; margin: 8px 0; flex-wrap: wrap; }
+.score-dim { background: #f5f5f5; padding: 1px 8px; border-radius: 8px; font-size: 11px; color: var(--text-muted); }
 .score-dim.ok { background: #E8F5E9; color: #2E7D32; }
-.read-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 16px;
-  border-radius: var(--radius-sm);
-  background: var(--primary);
-  color: #fff;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  transition: opacity .2s;
-}
+.read-btn { display: inline-flex; align-items: center; padding: 6px 16px; border-radius: var(--radius-sm); background: var(--primary); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; transition: opacity .2s; }
 .read-btn:hover { opacity: .8; }
-
-/* ===== 页脚 ===== */
-.site-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  padding: 20px 24px;
-  text-align: center;
-}
+.site-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
 .footer-inner { max-width: 1200px; margin: 0 auto; }
 .site-footer p { font-size: 13px; color: var(--text-muted); }
-
-/* ===== 精选网格 ===== */
-.selected-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 14px;
-  margin-bottom: 24px;
-}
-
-/* ===== 关于页 ===== */
+.selected-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 24px; }
 .about-content { max-width: 760px; padding: 36px 28px; }
 .about-content h2 { font-size: 20px; margin: 28px 0 10px; color: var(--text); }
 .about-content p { font-size: 15px; color: var(--text-muted); margin-bottom: 10px; }
@@ -372,15 +105,7 @@ body {
 .source-table th { background: var(--primary-bg); color: var(--primary); font-weight: 700; }
 .source-table tr:hover { background: #FAFAFA; }
 .status-ok { color: #2E7D32; font-weight: 700; }
-
-/* ===== 响应式 ===== */
-@media (max-width: 768px) {
-  .content-grid { grid-template-columns: 1fr; }
-  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
-  .header-nav { display: none; }
-  .header-stats { display: none; }
-  .articles-area { padding: 16px; }
-}
+@media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); } .header-nav { display: none; } .header-stats { display: none; } .articles-area { padding: 16px; } }
 </style>
 </head>
 <body>
@@ -394,12 +119,8 @@ body {
       </svg>
       小螺号康复精选
     </a>
-    <nav class="header-nav">
-      <a href="index.html" class="">🏠 今日精选</a><a href="articulation.html" class="">🔤 构音障碍</a><a href="language.html" class="">💬 语言发育</a><a href="hearing.html" class="">👂 听力障碍</a><a href="autism.html" class="active">🌟 孤独症谱系</a><a href="about.html" class="">ℹ️ 关于</a>
-    </nav>
-    <div class="header-stats">
-      🏆 <span>49</span> 精选 &nbsp; 📚 <span>55</span> 资讯 &nbsp; 🕐 2026-05-07 15:15
-    </div>
+    <nav class="header-nav"><a href="index.html" class="">🏠 今日精选</a><a href="articulation.html" class="">🔤 构音障碍</a><a href="language.html" class="">💬 语言发育</a><a href="hearing.html" class="">👂 听力障碍</a><a href="autism.html" class="active">🌟 孤独症谱系</a><a href="about.html" class="">ℹ️ 关于</a></nav>
+    <div class="header-stats">🏆 <span>49</span> 精选 &nbsp; 📚 <span>55</span> 资讯 &nbsp; 🕐 2026-05-07 15:15</div>
   </div>
 </header>
 <div class="stats-bar">
@@ -436,31 +157,21 @@ body {
       <div class="sidebar-section">
         <h3 class="sidebar-title">📡 主要来源</h3>
         <div class="source-list">
-          <div class="source-item">⭐ WHO</div>
-          <div class="source-item">⭐ ASHA</div>
-          <div class="source-item">⭐ NIH/NIDCD</div>
-          <div class="source-item">⭐ CDC</div>
-          <div class="source-item">⭐ PubMed</div>
+          <div class="source-item">⭐ 美国言语语言听力协会ASHA</div>
+          <div class="source-item">⭐ 世界卫生组织WHO</div>
+          <div class="source-item">⭐ 学术文献PubMed</div>
           <div class="source-item">中国康复医学会</div>
+          <div class="source-item">中国听力语言康复研究中心</div>
         </div>
       </div>
     </aside>
-    
     <section class="articles-area">
-      <div class="articles-header">
-        <h2 class="section-title">🌟 孤独症谱系</h2>
-      </div>
+      <div class="articles-header"><h2 class="section-title">🌟 孤独症谱系</h2></div>
       
       <h3 class="subsection-title">📅 最新资讯</h3>
-      <div class="date-articles">
-    <div class="date-group">
-      <div class="date-label-row">
-        <span class="date-label">📅 04月23日</span>
-        <span class="date-count">1篇</span>
-      </div>
-      <div class="date-articles">
-        
-<div class="article-card">
+      <div class="date-articles"><div class="date-group">
+      <div class="date-label-row"><span class="date-label">📅 04月23日</span><span class="date-count">1篇</span></div>
+      <div class="date-articles"><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-top">74分</span>
@@ -474,244 +185,226 @@ body {
     <span>📅 04月23日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 100</span>
-    <span class="score-dim ">权威 80</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 100</span>
+    <span class="score-dim">权威 80</span>
     <span class="score-dim">适用 50</span>
   </div>
   <a href="https://www.aitongxing.cn
 " target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-      </div>
-    </div>
-    <div class="date-group">
-      <div class="date-label-row">
-        <span class="date-label">📅 04月07日</span>
-        <span class="date-count">11篇</span>
-      </div>
-      <div class="date-articles">
-        
-<div class="article-card">
+</div></div>
+    </div><div class="date-group">
+      <div class="date-label-row"><span class="date-label">📅 04月07日</span><span class="date-count">11篇</span></div>
+      <div class="date-articles"><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">73分</span>
   </div>
-  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,d8d90aab-ccbb-43b1-a99a-ba7f3758d8f1,2870e1e5-d703-47bc-a9a2-1f43b58c5d05,200be14e-8ebe-ed11-8145-005056834e2b/" target="_blank" rel="noopener">Autism Evidence Map for summaries on caregiver-, peer-, or sibling-mediated interventions</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,d8d90aab-ccbb-43b1-a99a-ba7f3758d8f1,2870e1e5-d703-47bc-a9a2-1f43b58c5d05,200be14e-8ebe-ed11-8145-005056834e2b/" target="_blank" rel="noopener">孤独症循证地图：照护者/同伴/兄妹介入学干预证据汇总</a></h3>
+  <p class="card-summary">ASHA循证地图 | 汇总孤独症谱系障碍儿童由照护者、同伴或兄妹实施的干预措施循证证据，评估各方法对社交沟通的改善效果。</p>
   <div class="card-reason">💡 家长可直接参考的家庭干预方案。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 55</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 55</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,d8d90aab-ccbb-43b1-a99a-ba7f3758d8f1,2870e1e5-d703-47bc-a9a2-1f43b58c5d05,200be14e-8ebe-ed11-8145-005056834e2b/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">73分</span>
   </div>
-  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,25b5e7f6-ee0b-4a83-a2e1-6532c9d34ac0/" target="_blank" rel="noopener">Autism Evidence Map for summaries on social communication interventions</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,25b5e7f6-ee0b-4a83-a2e1-6532c9d34ac0/" target="_blank" rel="noopener">孤独症循证地图：社交沟通干预措施证据汇总</a></h3>
+  <p class="card-summary">ASHA循证地图 | 系统梳理孤独症谱系障碍儿童社交沟通干预的循证研究，涵盖TEACCH、社交故事、关键反应训练等主流方法的效果证据。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 55</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 55</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,25b5e7f6-ee0b-4a83-a2e1-6532c9d34ac0/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/clinical-topics/social-communication-disorder/" target="_blank" rel="noopener">Social Communication Disorder</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/clinical-topics/social-communication-disorder/" target="_blank" rel="noopener">社交沟通障碍SCD：诊断标准与干预方法</a></h3>
+  <p class="card-summary">ASHA专业话题 | 社交沟通障碍是独立诊断类别，表现为社交情境下的沟通困难，详解其与孤独症如何区分、核心特征及干预方向。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:14</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://www.asha.org/practice-portal/clinical-topics/social-communication-disorder/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/professional-issues/augmentative-and-alternative-communication/" target="_blank" rel="noopener">Augmentative and Alternative Communication (AAC)</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/professional-issues/augmentative-and-alternative-communication/" target="_blank" rel="noopener">辅助替代沟通AAC：无口语儿童的沟通支持全指南</a></h3>
+  <p class="card-summary">ASHA专业话题 | 全面介绍AAC系统，包括低科技（图片交换沟通系统PECS）和高科技（语音输出设备），以及在孤独症和言语失用症中的应用。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:14</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://www.asha.org/practice-portal/professional-issues/augmentative-and-alternative-communication/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/clinical-topics/autism/" target="_blank" rel="noopener">autism spectrum disorder</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/clinical-topics/autism/" target="_blank" rel="noopener">孤独症谱系障碍ASD：言语治疗师必知的核心知识</a></h3>
+  <p class="card-summary">ASHA专业话题 | 孤独症谱系障碍的诊断标准、共患障碍、社交沟通特征及言语治疗师在ASD多学科团队中的角色与循证筛查建议。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://www.asha.org/practice-portal/clinical-topics/autism/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/clinical-topics/autism/communication-about-autism/" target="_blank" rel="noopener">Communication About Autism: Terminology Considerations</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/clinical-topics/autism/communication-about-autism/" target="_blank" rel="noopener">孤独症沟通中的术语规范：从诊断名称到日常对话</a></h3>
+  <p class="card-summary">ASHA专业话题 | 讨论孤独症谱系障碍相关术语的使用规范，包括identity-first与person-first语言的选择及最佳实践建议。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://www.asha.org/practice-portal/clinical-topics/autism/communication-about-autism/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d" target="_blank" rel="noopener">Autism Evidence Map</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d" target="_blank" rel="noopener">孤独症谱系障碍循证地图：综合干预证据汇总</a></h3>
+  <p class="card-summary">ASHA循证地图 | ASHA孤独症综合循证地图，汇总所有经同行评审的ASD干预研究证据，涵盖行为、语言、社交、感觉整合等各领域的有效干预方法。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://leader.pubs.asha.org/doi/10.1044/leader.BML.24052019.32" target="_blank" rel="noopener">The Right Codes for ASD-Related Services</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://leader.pubs.asha.org/doi/10.1044/leader.BML.24052019.32" target="_blank" rel="noopener">孤独症谱系障碍相关服务的保险理赔编码指南</a></h3>
+  <p class="card-summary">ASHA专业话题 | 帮助言语治疗师正确使用CPT和ICD编码为ASD相关言语语言服务申请保险报销，详解孤独症评估与个别化治疗的编码规范。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://leader.pubs.asha.org/doi/10.1044/leader.BML.24052019.32" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://www.asha.org/advocacy/applied-behavior-analysis/" target="_blank" rel="noopener">advocacy resource about ABA</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://www.asha.org/advocacy/applied-behavior-analysis/" target="_blank" rel="noopener">应用行为分析ABA孤独症干预的倡导资源汇总</a></h3>
+  <p class="card-summary">ASHA专业话题 | 汇总应用行为分析ABA用于孤独症干预的研究证据和倡导资源，帮助治疗师和家长了解ABA在ASD行为干预中的角色及局限性。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://www.asha.org/advocacy/applied-behavior-analysis/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,26ba4458-29c4-ed11-8145-005056834e2b/" target="_blank" rel="noopener">Autism Evidence Map for summaries on NDBI</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,26ba4458-29c4-ed11-8145-005056834e2b/" target="_blank" rel="noopener">孤独症循证地图：自然发展行为干预NDBI证据汇总</a></h3>
+  <p class="card-summary">ASHA循证地图 | 汇总自然发展行为干预NDBI用于孤独症的研究证据，包括早期介入丹佛模式ESDM、JASPER等方法。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,26ba4458-29c4-ed11-8145-005056834e2b/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-<div class="article-card">
+</div><div class="article-card">
   <div class="card-header">
     <span class="cat-badge cat-autism">🌟 孤独症谱系</span>
     <span class="score-badge score-high">72分</span>
   </div>
-  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,c7c3cdf3-6caa-450a-a924-3dab3bf41448/" target="_blank" rel="noopener">Autism Evidence Map for summaries on AAC</a></h3>
-  <p class="card-summary">（点击阅读原文）</p>
+  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,c7c3cdf3-6caa-450a-a924-3dab3bf41448/" target="_blank" rel="noopener">孤独症循证地图：辅助替代沟通AAC干预证据汇总</a></h3>
+  <p class="card-summary">ASHA循证地图 | 汇总AAC用于孤独症的循证研究证据，涵盖图片交换系统PECS和语音输出设备VOCA对无口语ASD患者的效果。</p>
   <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
   <div class="card-footer">
-    <span>📖 ASHA</span>
+    <span>📖 美国言语语言听力协会</span>
     <span>📅 04月07日 15:15</span>
   </div>
   <div class="card-scores">
-    <span class="score-dim ">实用 50</span>
-    <span class="score-dim ok">前沿 90</span>
-    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">实用 50</span>
+    <span class="score-dim">前沿 90</span>
+    <span class="score-dim">权威 88</span>
     <span class="score-dim">适用 40</span>
   </div>
   <a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/599c96cf-09d4-4b85-bec0-114b990ea30d?&amp;filters=/34d5aa91-29c7-4bef-b1fb-22c2dd2ad1e8,c7c3cdf3-6caa-450a-a924-3dab3bf41448/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-</div>
-      </div>
+</div></div>
     </div></div>
     </section>
   </div>
@@ -719,7 +412,7 @@ body {
 <footer class="site-footer">
   <div class="footer-inner">
     <p>小螺号康复精选 · 每日自动抓取 · 更新时间：2026-05-07 15:15</p>
-    <p>信息来源：WHO · ASHA · NIH/NIDCD · CDC · PubMed · 中国康复医学会</p>
+    <p>信息来源：ASHA · WHO · 学术文献 · 中国康复医学会 · 中国听力语言康复研究中心</p>
   </div>
 </footer>
 </body>

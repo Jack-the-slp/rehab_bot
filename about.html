@@ -6,7 +6,6 @@
 <title>关于 — 小螺号康复精选</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐚</text></svg>">
 <style>
-/* ===== 变量 ===== */
 :root {
   --primary: #C2185B;
   --primary-light: #E91E8C;
@@ -22,348 +21,82 @@
   --shadow: 0 2px 12px rgba(0,0,0,.08);
   --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-}
-
-/* ===== 顶栏 ===== */
-.site-header {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: #fff;
-  padding: 0 24px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow);
-}
-.header-inner {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  height: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-}
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+.site-header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+.header-inner { display: flex; align-items: center; gap: 20px; height: 60px; max-width: 1200px; margin: 0 auto; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-size: 18px; font-weight: 700; }
 .logo svg { flex-shrink: 0; }
-.header-nav {
-  display: flex;
-  gap: 4px;
-  flex: 1;
-}
-.header-nav a {
-  color: rgba(255,255,255,.85);
-  text-decoration: none;
-  padding: 6px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 500;
-  transition: all .2s;
-}
+.header-nav { display: flex; gap: 4px; flex: 1; }
+.header-nav a { color: rgba(255,255,255,.85); text-decoration: none; padding: 6px 14px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; transition: all .2s; }
 .header-nav a:hover { background: rgba(255,255,255,.2); color: #fff; }
 .header-nav a.active { background: rgba(255,255,255,.25); color: #fff; font-weight: 700; }
-.header-stats {
-  display: flex;
-  gap: 16px;
-  font-size: 13px;
-  opacity: .9;
-}
-
-/* ===== 统计条 ===== */
-.stats-bar {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 12px 24px;
-}
-.stats-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.stat-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-}
+.header-stats { display: flex; gap: 16px; font-size: 13px; opacity: .9; }
+.stats-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 24px; }
+.stats-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 12px; flex-wrap: wrap; }
+.stat-pill { display: flex; align-items: center; gap: 6px; padding: 4px 14px; border-radius: 20px; font-size: 13px; }
 .stat-num { font-weight: 800; font-size: 16px; }
 .stat-label { color: var(--text-muted); }
-
-/* ===== 主布局 ===== */
 .container { max-width: 1200px; margin: 0 auto; }
-.content-grid {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 0;
-  min-height: calc(100vh - 120px);
-}
-
-/* ===== 侧边栏 ===== */
-.sidebar {
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  padding: 20px 0;
-  position: sticky;
-  top: 60px;
-  height: calc(100vh - 60px);
-  overflow-y: auto;
-}
+.content-grid { display: grid; grid-template-columns: 220px 1fr; gap: 0; min-height: calc(100vh - 120px); }
+.sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 20px 0; position: sticky; top: 60px; height: calc(100vh - 60px); overflow-y: auto; }
 .sidebar-section { padding: 0 16px 20px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
 .sidebar-section:last-child { border-bottom: none; }
-.sidebar-title {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  margin-bottom: 10px;
-}
+.sidebar-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
 .sidebar-nav { list-style: none; }
 .sidebar-nav li { margin-bottom: 2px; }
-.sidebar-nav a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  color: var(--text-muted);
-  font-size: 14px;
-  transition: all .2s;
-}
+.sidebar-nav a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: var(--radius-sm); text-decoration: none; color: var(--text-muted); font-size: 14px; transition: all .2s; }
 .sidebar-nav a:hover { background: var(--primary-bg); color: var(--primary); }
 .sidebar-nav a.active { background: var(--primary-bg); color: var(--primary); font-weight: 700; }
-.badge {
-  background: var(--primary-bg);
-  color: var(--primary);
-  font-size: 11px;
-  font-weight: 700;
-  padding: 1px 7px;
-  border-radius: 10px;
-  margin-left: auto;
-}
+.badge { background: var(--primary-bg); color: var(--primary); font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 10px; margin-left: auto; }
 .score-legend { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
 .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
 .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .sidebar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.8; }
 .source-list { display: flex; flex-direction: column; gap: 4px; }
 .source-item { font-size: 13px; color: var(--text-muted); }
-
-/* ===== 文章区 ===== */
 .articles-area { padding: 24px 28px; }
-.articles-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
+.articles-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
 .section-title { font-size: 20px; font-weight: 700; color: var(--text); }
 .articles-controls { display: flex; gap: 10px; align-items: center; }
-.search-input {
-  padding: 8px 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  width: 220px;
-  outline: none;
-  transition: border-color .2s;
-}
+.search-input { padding: 8px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; width: 220px; outline: none; transition: border-color .2s; }
 .search-input:focus { border-color: var(--primary); }
-.filter-select {
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  outline: none;
-  background: #fff;
-  cursor: pointer;
-}
-.subsection-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: .05em;
-  margin-bottom: 14px;
-  margin-top: 0;
-}
-
-/* ===== 日期分组 ===== */
+.filter-select { padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; outline: none; background: #fff; cursor: pointer; }
+.subsection-title { font-size: 14px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 14px; margin-top: 0; }
 .date-group { margin-bottom: 28px; }
-.date-label-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.date-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--primary);
-  white-space: nowrap;
-}
-.date-label-row::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+.date-label-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.date-label { font-size: 13px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+.date-label-row::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 .date-count { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
 .date-articles { display: flex; flex-direction: column; gap: 12px; }
-
-/* ===== 文章卡片 ===== */
-.article-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  transition: box-shadow .2s, transform .2s;
-  position: relative;
-  overflow: hidden;
-}
+.article-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; transition: box-shadow .2s, transform .2s; position: relative; overflow: hidden; }
 .article-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-.article-card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, var(--primary), var(--accent));
-  border-radius: 0 2px 2px 0;
-}
-.card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  gap: 10px;
-}
-.cat-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-}
+.article-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--primary), var(--accent)); border-radius: 0 2px 2px 0; }
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 10px; }
+.cat-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
 .cat-articulation { background: #E3F2FD; color: #1565C0; }
 .cat-language { background: #E8F5E9; color: #2E7D32; }
 .cat-hearing { background: #FFF3E0; color: #E65100; }
 .cat-autism { background: #F3E5F5; color: #7B1FA2; }
-.score-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 10px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 800;
-}
+.score-badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 10px; font-size: 13px; font-weight: 800; }
 .score-top { background: #FFEBEE; color: #C62828; }
 .score-high { background: #FFF3E0; color: #E65100; }
 .score-mid { background: #E8F5E9; color: #2E7D32; }
-.card-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
+.card-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; line-height: 1.5; }
 .card-title a { color: var(--text); text-decoration: none; transition: color .2s; }
 .card-title a:hover { color: var(--primary); }
-.card-summary {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 10px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.card-reason {
-  background: var(--primary-bg);
-  border-left: 3px solid var(--primary);
-  padding: 8px 12px;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: 13px;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  color: var(--text-muted);
-  padding-top: 8px;
-  border-top: 1px solid var(--border);
-}
-.card-scores {
-  display: flex;
-  gap: 6px;
-  margin: 8px 0;
-  flex-wrap: wrap;
-}
-.score-dim {
-  background: #f5f5f5;
-  padding: 1px 8px;
-  border-radius: 8px;
-  font-size: 11px;
-  color: var(--text-muted);
-}
+.card-summary { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-reason { background: var(--primary-bg); border-left: 3px solid var(--primary); padding: 8px 12px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: 13px; color: var(--text); margin-bottom: 10px; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--text-muted); padding-top: 8px; border-top: 1px solid var(--border); }
+.card-scores { display: flex; gap: 6px; margin: 8px 0; flex-wrap: wrap; }
+.score-dim { background: #f5f5f5; padding: 1px 8px; border-radius: 8px; font-size: 11px; color: var(--text-muted); }
 .score-dim.ok { background: #E8F5E9; color: #2E7D32; }
-.read-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 16px;
-  border-radius: var(--radius-sm);
-  background: var(--primary);
-  color: #fff;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  transition: opacity .2s;
-}
+.read-btn { display: inline-flex; align-items: center; padding: 6px 16px; border-radius: var(--radius-sm); background: var(--primary); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; transition: opacity .2s; }
 .read-btn:hover { opacity: .8; }
-
-/* ===== 页脚 ===== */
-.site-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  padding: 20px 24px;
-  text-align: center;
-}
+.site-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
 .footer-inner { max-width: 1200px; margin: 0 auto; }
 .site-footer p { font-size: 13px; color: var(--text-muted); }
-
-/* ===== 精选网格 ===== */
-.selected-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 14px;
-  margin-bottom: 24px;
-}
-
-/* ===== 关于页 ===== */
+.selected-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 24px; }
 .about-content { max-width: 760px; padding: 36px 28px; }
 .about-content h2 { font-size: 20px; margin: 28px 0 10px; color: var(--text); }
 .about-content p { font-size: 15px; color: var(--text-muted); margin-bottom: 10px; }
@@ -372,15 +105,7 @@ body {
 .source-table th { background: var(--primary-bg); color: var(--primary); font-weight: 700; }
 .source-table tr:hover { background: #FAFAFA; }
 .status-ok { color: #2E7D32; font-weight: 700; }
-
-/* ===== 响应式 ===== */
-@media (max-width: 768px) {
-  .content-grid { grid-template-columns: 1fr; }
-  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
-  .header-nav { display: none; }
-  .header-stats { display: none; }
-  .articles-area { padding: 16px; }
-}
+@media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); } .header-nav { display: none; } .header-stats { display: none; } .articles-area { padding: 16px; } }
 </style>
 </head>
 <body>
@@ -394,12 +119,8 @@ body {
       </svg>
       小螺号康复精选
     </a>
-    <nav class="header-nav">
-      <a href="index.html" class="">🏠 今日精选</a><a href="articulation.html" class="">🔤 构音障碍</a><a href="language.html" class="">💬 语言发育</a><a href="hearing.html" class="">👂 听力障碍</a><a href="autism.html" class="">🌟 孤独症谱系</a><a href="about.html" class="active">ℹ️ 关于</a>
-    </nav>
-    <div class="header-stats">
-      🏆 <span>49</span> 精选 &nbsp; 📚 <span>55</span> 资讯 &nbsp; 🕐 2026-05-07 15:15
-    </div>
+    <nav class="header-nav"><a href="index.html" class="">🏠 今日精选</a><a href="articulation.html" class="">🔤 构音障碍</a><a href="language.html" class="">💬 语言发育</a><a href="hearing.html" class="">👂 听力障碍</a><a href="autism.html" class="">🌟 孤独症谱系</a><a href="about.html" class="active">ℹ️ 关于</a></nav>
+    <div class="header-stats">🏆 <span>49</span> 精选 &nbsp; 📚 <span>55</span> 资讯 &nbsp; 🕐 2026-05-07 15:15</div>
   </div>
 </header>
 <div class="stats-bar">
@@ -436,57 +157,36 @@ body {
       <div class="sidebar-section">
         <h3 class="sidebar-title">📡 主要来源</h3>
         <div class="source-list">
-          <div class="source-item">⭐ WHO</div>
-          <div class="source-item">⭐ ASHA</div>
-          <div class="source-item">⭐ NIH/NIDCD</div>
-          <div class="source-item">⭐ CDC</div>
-          <div class="source-item">⭐ PubMed</div>
+          <div class="source-item">⭐ 美国言语语言听力协会ASHA</div>
+          <div class="source-item">⭐ 世界卫生组织WHO</div>
+          <div class="source-item">⭐ 学术文献PubMed</div>
           <div class="source-item">中国康复医学会</div>
+          <div class="source-item">中国听力语言康复研究中心</div>
         </div>
       </div>
     </aside>
-    
     <section class="articles-area about-content">
       <h2 style="margin-top:0">关于小螺号康复精选</h2>
       <p>面向言语治疗师和特殊儿童家长的<strong>每日自动资讯聚合平台</strong>，涵盖构音障碍、语言发育迟缓、听力障碍、孤独症谱系四大领域。</p>
-      <p>内容来自 WHO、ASHA、NIH/NIDCD、CDC、PubMed、中国康复医学会等权威来源，每日自动抓取、筛选、评分。</p>
-      
+      <p>内容来自美国言语语言听力协会(ASHA)、世界卫生组织(WHO)、学术文献、中国康复医学会等权威来源，每日自动抓取、筛选、评分。</p>
       <h2>📡 数据来源</h2>
-      <table class="source-table">
-        <tr><th>来源</th><th>类型</th><th>状态</th></tr>
-        <tr><td>⭐ WHO RSS</td><td>国际组织</td><td class="status-ok">✅ 正常</td></tr>
-        <tr><td>⭐ PubMed E-utilities</td><td>学术数据库</td><td class="status-ok">✅ 正常</td></tr>
-        <tr><td>⭐ ArXiv RSS (cs.CL)</td><td>预印本</td><td class="status-ok">✅ 正常</td></tr>
-        <tr><td>⭐ ASHA Practice Portal</td><td>学会官网</td><td class="status-ok">✅ 正常</td></tr>
-        <tr><td>中国康复医学会</td><td>行业协会</td><td class="status-ok">✅ 正常</td></tr>
-        <tr><td>中国听力语言康复研究中心</td><td>科研机构</td><td class="status-ok">✅ 正常</td></tr>
-        <tr><td>⭐ JSLHR</td><td>学术期刊</td><td class="status-ok">✅ 正常</td></tr>
-        <tr><td>⭐ NIH/NIDCD</td><td>政府机构</td><td class="status-ok">✅ 正常</td></tr>
-      </table>
-      
+      <table class="source-table"><tr><th>来源</th><th>类型</th><th>状态</th></tr>
+      <tr><td>⭐ ASHA Practice Portal</td><td>美国专业学会</td><td class="status-ok">✅ 正常</td></tr>
+      <tr><td>⭐ WHO RSS</td><td>国际组织</td><td class="status-ok">✅ 正常</td></tr>
+      <tr><td>⭐ PubMed</td><td>学术数据库</td><td class="status-ok">✅ 正常</td></tr>
+      <tr><td>⭐ ArXiv</td><td>预印本</td><td class="status-ok">✅ 正常</td></tr>
+      <tr><td>中国康复医学会</td><td>行业协会</td><td class="status-ok">✅ 正常</td></tr>
+      <tr><td>中国听力语言康复研究中心</td><td>科研机构</td><td class="status-ok">✅ 正常</td></tr></table>
       <h2>🏆 评分算法</h2>
-      <p>每篇文章综合评分（满分100）：</p>
-      <table class="source-table">
-        <tr><th>维度</th><th>权重</th><th>说明</th></tr>
-        <tr><td>实用度</td><td>25%</td><td>含家庭/训练/策略关键词</td></tr>
-        <tr><td>权威度</td><td>25%</td><td>来源评级（WHO=95, ASHA=88…）</td></tr>
-        <tr><td>前沿度</td><td>20%</td><td>30天内=100分，1年+=50分</td></tr>
-        <tr><td>适用面</td><td>15%</td><td>含儿童/家长/治疗师关键词</td></tr>
-        <tr><td>通俗度</td><td>15%</td><td>摘要句子短=易读</td></tr>
-      </table>
+      <p>每篇文章综合评分（满分100）：实用度25% · 权威度25% · 前沿度20% · 适用面15% · 通俗度15%</p>
       <p>精选标准：综合评分 ≥74分</p>
-      
-      <h2>🎨 配色方案</h2>
-      <p>主色：<strong style="color:var(--primary)">玫红 #C2185B</strong>（家长版）</p>
-      <p>副色：<strong style="color:#2b7dd1">藏蓝 #2b7dd1</strong>（康复师版）</p>
-      <p>修改 CSS 顶部的 <code>:root</code> 变量即可切换配色。</p>
     </section>
   </div>
 </div>
 <footer class="site-footer">
   <div class="footer-inner">
     <p>小螺号康复精选 · 每日自动抓取 · 更新时间：2026-05-07 15:15</p>
-    <p>信息来源：WHO · ASHA · NIH/NIDCD · CDC · PubMed · 中国康复医学会</p>
+    <p>信息来源：ASHA · WHO · 学术文献 · 中国康复医学会 · 中国听力语言康复研究中心</p>
   </div>
 </footer>
 </body>
