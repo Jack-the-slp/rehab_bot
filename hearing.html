@@ -1,167 +1,982 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>听力障碍 — 小螺号康复精选</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>听力障碍分类页 — 小螺号康复精选</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐚</text></svg>">
+<style>
+/* ===== 变量 ===== */
+:root {
+  --primary: #C2185B;
+  --primary-light: #E91E8C;
+  --primary-bg: #FCE4EC;
+  --accent: #FF4081;
+  --bg: #F8F9FA;
+  --surface: #FFFFFF;
+  --border: #E0E0E0;
+  --text: #212121;
+  --text-muted: #757575;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ===== 顶栏 ===== */
+.site-header {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+.logo svg { flex-shrink: 0; }
+.header-nav {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+.header-nav a {
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .2s;
+}
+.header-nav a:hover { background: rgba(255,255,255,.2); color: #fff; }
+.header-nav a.active { background: rgba(255,255,255,.25); color: #fff; font-weight: 700; }
+.header-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  opacity: .9;
+}
+
+/* ===== 统计条 ===== */
+.stats-bar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+}
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+.stat-num { font-weight: 800; font-size: 16px; }
+.stat-label { color: var(--text-muted); }
+
+/* ===== 主布局 ===== */
+.container { max-width: 1200px; margin: 0 auto; }
+.content-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 0;
+  min-height: calc(100vh - 120px);
+}
+
+/* ===== 侧边栏 ===== */
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+.sidebar-section { padding: 0 16px 20px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
+.sidebar-section:last-child { border-bottom: none; }
+.sidebar-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 10px;
+}
+.sidebar-nav { list-style: none; }
+.sidebar-nav li { margin-bottom: 2px; }
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  transition: all .2s;
+}
+.sidebar-nav a:hover { background: var(--primary-bg); color: var(--primary); }
+.sidebar-nav a.active { background: var(--primary-bg); color: var(--primary); font-weight: 700; }
+.badge {
+  background: var(--primary-bg);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+.score-legend { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.sidebar-desc { font-size: 12px; color: var(--text-muted); line-height: 1.8; }
+.source-list { display: flex; flex-direction: column; gap: 4px; }
+.source-item { font-size: 13px; color: var(--text-muted); }
+
+/* ===== 文章区 ===== */
+.articles-area { padding: 24px 28px; }
+.articles-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.section-title { font-size: 20px; font-weight: 700; color: var(--text); }
+.articles-controls { display: flex; gap: 10px; align-items: center; }
+.search-input {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  width: 220px;
+  outline: none;
+  transition: border-color .2s;
+}
+.search-input:focus { border-color: var(--primary); }
+.filter-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+  cursor: pointer;
+}
+.subsection-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  margin-bottom: 14px;
+  margin-top: 0;
+}
+
+/* ===== 日期分组 ===== */
+.date-group { margin-bottom: 28px; }
+.date-label-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.date-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+.date-label-row::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.date-count { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.date-articles { display: flex; flex-direction: column; gap: 12px; }
+
+/* ===== 文章卡片 ===== */
+.article-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  transition: box-shadow .2s, transform .2s;
+  position: relative;
+  overflow: hidden;
+}
+.article-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.article-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--primary), var(--accent));
+  border-radius: 0 2px 2px 0;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.cat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.cat-articulation { background: #E3F2FD; color: #1565C0; }
+.cat-language { background: #E8F5E9; color: #2E7D32; }
+.cat-hearing { background: #FFF3E0; color: #E65100; }
+.cat-autism { background: #F3E5F5; color: #7B1FA2; }
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 800;
+}
+.score-top { background: #FFEBEE; color: #C62828; }
+.score-high { background: #FFF3E0; color: #E65100; }
+.score-mid { background: #E8F5E9; color: #2E7D32; }
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.card-title a { color: var(--text); text-decoration: none; transition: color .2s; }
+.card-title a:hover { color: var(--primary); }
+.card-summary {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-reason {
+  background: var(--primary-bg);
+  border-left: 3px solid var(--primary);
+  padding: 8px 12px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.card-scores {
+  display: flex;
+  gap: 6px;
+  margin: 8px 0;
+  flex-wrap: wrap;
+}
+.score-dim {
+  background: #f5f5f5;
+  padding: 1px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.score-dim.ok { background: #E8F5E9; color: #2E7D32; }
+.read-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity .2s;
+}
+.read-btn:hover { opacity: .8; }
+
+/* ===== 页脚 ===== */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 20px 24px;
+  text-align: center;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.site-footer p { font-size: 13px; color: var(--text-muted); }
+
+/* ===== 精选网格 ===== */
+.selected-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+/* ===== 关于页 ===== */
+.about-content { max-width: 760px; padding: 36px 28px; }
+.about-content h2 { font-size: 20px; margin: 28px 0 10px; color: var(--text); }
+.about-content p { font-size: 15px; color: var(--text-muted); margin-bottom: 10px; }
+.source-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+.source-table th, .source-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+.source-table th { background: var(--primary-bg); color: var(--primary); font-weight: 700; }
+.source-table tr:hover { background: #FAFAFA; }
+.status-ok { color: #2E7D32; font-weight: 700; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .content-grid { grid-template-columns: 1fr; }
+  .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+  .header-nav { display: none; }
+  .header-stats { display: none; }
+  .articles-area { padding: 16px; }
+}
+</style>
 </head>
 <body>
-
 <header class="site-header">
-  <div class="header-inner container">
+  <div class="header-inner">
     <a href="index.html" class="logo">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <path d="M16 8c-1.1 0-2 .9-2 2v6l-4 4h8l-4-4v-6c0-1.1-.9-2-2-2z" fill="#C2185B"/>
-        <path d="M10 20c0 3.3 2.7 6 6 6s6-2.7 6-6H10z" fill="#C2185B" opacity=".7"/>
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="12" fill="rgba(255,255,255,.2)"/>
+        <path d="M16 8c-1.1 0-2 .9-2 2v6l-4 4h8l-4-4v-6c0-1.1-.9-2-2-2z" fill="#fff"/>
+        <path d="M10 20c0 3.3 2.7 6 6 6s6-2.7 6-6H10z" fill="rgba(255,255,255,.7)"/>
       </svg>
-      <span>小螺号康复精选</span>
+      小螺号康复精选
     </a>
     <nav class="header-nav">
-      <a href="index.html">今日精选</a>
-      <a href="hearing.html" class="active">构音障碍</a>
-      <a href="language.html">语言发育</a>
-      <a href="hearing.html">听力障碍</a>
-      <a href="autism.html">孤独症</a>
-      <a href="about.html">关于</a>
+      <a href="index.html" class="">🏠 今日精选</a><a href="articulation.html" class="">🔤 构音障碍</a><a href="language.html" class="">💬 语言发育</a><a href="hearing.html" class="active">👂 听力障碍</a><a href="autism.html" class="">🌟 孤独症谱系</a><a href="about.html" class="">ℹ️ 关于</a>
     </nav>
+    <div class="header-stats">
+      🏆 <span>49</span> 精选 &nbsp; 📚 <span>55</span> 资讯 &nbsp; 🕐 2026-05-07 15:15
+    </div>
   </div>
 </header>
-
-<main class="main-content container">
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-pill" style="background:#E3F2FD"><span class="stat-num">5</span><span class="stat-label">构音障碍</span></div>
+    <div class="stat-pill" style="background:#E8F5E9"><span class="stat-num">16</span><span class="stat-label">语言发育</span></div>
+    <div class="stat-pill" style="background:#FFF3E0"><span class="stat-num">22</span><span class="stat-label">听力障碍</span></div>
+    <div class="stat-pill" style="background:#F3E5F5"><span class="stat-num">12</span><span class="stat-label">孤独症</span></div>
+    <div class="stat-pill" style="background:#FCE4EC"><span class="stat-num">14</span><span class="stat-label">个来源</span></div>
+  </div>
+</div>
+<div class="container">
   <div class="content-grid">
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar">
       <div class="sidebar-section">
         <h3 class="sidebar-title">📂 分类浏览</h3>
         <ul class="sidebar-nav">
-          <li><a href="index.html">🏠 今日精选</a></li>
-          <li><a href="hearing.html" class="active">🔤 构音障碍 <span class="badge" id="badgeArt">0</span></a></li>
-          <li><a href="language.html">💬 语言发育迟缓 <span class="badge" id="badgeLang">0</span></a></li>
-          <li><a href="hearing.html">👂 听力障碍 <span class="badge" id="badgeHear">0</span></a></li>
-          <li><a href="autism.html">🌟 孤独症谱系 <span class="badge" id="badgeAut">0</span></a></li>
+          <li><a href="index.html" class="">🏠 今日精选</a></li>
+          <li><a href="articulation.html" class="">🔤 构音障碍 <span class="badge">5</span></a></li>
+          <li><a href="language.html" class="">💬 语言发育迟缓 <span class="badge">16</span></a></li>
+          <li><a href="hearing.html" class="active">👂 听力障碍 <span class="badge">22</span></a></li>
+          <li><a href="autism.html" class="">🌟 孤独症谱系 <span class="badge">12</span></a></li>
         </ul>
       </div>
       <div class="sidebar-section">
-        <h3 class="sidebar-title">🔤 听力障碍专题</h3>
-        <div class="sidebar-desc">
-          涵盖：儿童听力损失、人工耳蜗、助听器、听力筛查、听力学、融合教育等。
+        <h3 class="sidebar-title">🏆 评分说明</h3>
+        <div class="score-legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#C62828"></span> ≥74 精选</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#E65100"></span> 70-73 优质</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#2E7D32"></span> 65-69 参考</div>
         </div>
+        <div class="sidebar-desc">五维评分：<br>实用度25% · 前沿度20%<br>权威度25% · 适用面15%<br>通俗度15%</div>
       </div>
       <div class="sidebar-section">
         <h3 class="sidebar-title">📡 主要来源</h3>
         <div class="source-list">
-          <div class="source-item">⭐ ASHA Practice Portal</div>
+          <div class="source-item">⭐ WHO</div>
+          <div class="source-item">⭐ ASHA</div>
+          <div class="source-item">⭐ NIH/NIDCD</div>
+          <div class="source-item">⭐ CDC</div>
           <div class="source-item">⭐ PubMed</div>
-          <div class="source-item">⭐ JSLHR</div>
           <div class="source-item">中国康复医学会</div>
         </div>
       </div>
     </aside>
-
+    
     <section class="articles-area">
       <div class="articles-header">
-        <h2 class="section-title" id="sectionTitle">🔤 构音障碍</h2>
-        <div class="articles-controls">
-          <input type="text" id="searchInput" class="search-input" placeholder="搜索...">
-        </div>
+        <h2 class="section-title">👂 听力障碍</h2>
       </div>
-      <div id="selectedSection" class="selected-grid" style="display:none">
-        <h3 class="subsection-title">⭐ 精选推荐</h3>
-        <div id="selectedGrid" class="articles-grid"></div>
+      
+      <h3 class="subsection-title">📅 最新资讯</h3>
+      <div class="date-articles">
+    <div class="date-group">
+      <div class="date-label-row">
+        <span class="date-label">📅 05月04日</span>
+        <span class="date-count">1篇</span>
       </div>
-      <h3 class="subsection-title" id="timelineTitle">📅 全部资讯</h3>
-      <div id="timelineList" class="timeline-list"></div>
+      <div class="date-articles">
+        
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-top">74分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.who.int/news/item/04-05-2026-joint-call-by-the-president-of-the-icrc--the-director-general-of-who-and-the-international-president-of-msf" target="_blank" rel="noopener">Joint call by the President of the ICRC, the Director-General of WHO and the International President of MSF</a></h3>
+  <p class="card-summary">Ten years ago, the UN Security Council unanimously adopted Resolution 2286 on health care in armed conflicts. The situation is even worse compared to 10 years ago. Today, we mark not an achievement – we mark a failure.  As violence affecting medical facilities, transport and personnel continues unab</p>
+  <div class="card-reason">💡 来自WHO/NIH/CDC的权威资料⭐⭐⭐⭐，临床参考价值高。</div>
+  <div class="card-footer">
+    <span>📖 WHO</span>
+    <span>📅 05月04日 00:00</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 100</span>
+    <span class="score-dim ok">权威 95</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.who.int/news/item/04-05-2026-joint-call-by-the-president-of-the-icrc--the-director-general-of-who-and-the-international-president-of-msf" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+      </div>
+    </div>
+    <div class="date-group">
+      <div class="date-label-row">
+        <span class="date-label">📅 04月30日</span>
+        <span class="date-count">2篇</span>
+      </div>
+      <div class="date-articles">
+        
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-top">74分</span>
+  </div>
+  <h3 class="card-title"><a href="https://pubmed.ncbi.nlm.nih.gov/42082249/" target="_blank" rel="noopener">Barriers to and facilitators of paediatric early hearing detection and intervention: protocol for a systematic review and meta-synthesis of qualitative evidence.</a></h3>
+  <p class="card-summary">期刊：BMJ Open（2026 May 3）| 作者：Amir-Behghadami M, Maleki M</p>
+  <div class="card-reason">💡 早期识别要点，家长和治疗师都需要掌握。</div>
+  <div class="card-footer">
+    <span>📖 BMJ Open</span>
+    <span>📅 04月30日 15:14</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 55</span>
+    <span class="score-dim ok">前沿 100</span>
+    <span class="score-dim ok">权威 92</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://pubmed.ncbi.nlm.nih.gov/42082249/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">73分</span>
+  </div>
+  <h3 class="card-title"><a href="https://pubmed.ncbi.nlm.nih.gov/42017749/" target="_blank" rel="noopener">Online Assessment and Enhancement of Auditory Perception for Residual /ɹ/ Distortions.</a></h3>
+  <p class="card-summary">期刊：J Speech Lang Hear Res（2026 Apr 22）| 作者：Hitchcock ER, Ochs LC, Preston JL</p>
+  <div class="card-reason">💡 来自WHO/NIH/CDC的权威资料⭐⭐⭐⭐，临床参考价值高。</div>
+  <div class="card-footer">
+    <span>📖 J Speech Lang Hear Res</span>
+    <span>📅 04月30日 15:14</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 100</span>
+    <span class="score-dim ok">权威 92</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://pubmed.ncbi.nlm.nih.gov/42017749/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+      </div>
+    </div>
+    <div class="date-group">
+      <div class="date-label-row">
+        <span class="date-label">📅 04月23日</span>
+        <span class="date-count">1篇</span>
+      </div>
+      <div class="date-articles">
+        
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-top">74分</span>
+  </div>
+  <h3 class="card-title"><a href="https://rdms.hearhealth.com/
+" target="_blank" rel="noopener">听障儿童康复服务数据管理系统</a></h3>
+  <p class="card-summary">来源：中国听力语言康复研究中心</p>
+  <div class="card-reason">💡 儿童康复实用内容，值得关注。</div>
+  <div class="card-footer">
+    <span>📖 中国听力语言康复研究中心</span>
+    <span>📅 04月23日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 100</span>
+    <span class="score-dim ">权威 80</span>
+    <span class="score-dim">适用 50</span>
+  </div>
+  <a href="https://rdms.hearhealth.com/
+" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+      </div>
+    </div>
+    <div class="date-group">
+      <div class="date-label-row">
+        <span class="date-label">📅 04月14日</span>
+        <span class="date-count">1篇</span>
+      </div>
+      <div class="date-articles">
+        
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-mid">69分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.who.int/news/item/14-04-2026-after-three-years-of-conflict--sudan-faces-a-deeper-health-crisis" target="_blank" rel="noopener">After three years of conflict, Sudan faces a deeper health crisis</a></h3>
+  <p class="card-summary">After three years of war, Sudan now accounts for the world’s largest humanitarian crisis, with 34 million people needing aid, 21 million lacking health services, and repeated attacks crippling a medical system already weakened by disease and hunger.
+
+While the situation is improving in some states</p>
+  <div class="card-reason">💡 来自WHO/NIH/CDC的权威资料⭐⭐⭐⭐，临床参考价值高。</div>
+  <div class="card-footer">
+    <span>📖 WHO</span>
+    <span>📅 04月14日 00:00</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 95</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.who.int/news/item/14-04-2026-after-three-years-of-conflict--sudan-faces-a-deeper-health-crisis" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+      </div>
+    </div>
+    <div class="date-group">
+      <div class="date-label-row">
+        <span class="date-label">📅 04月07日</span>
+        <span class="date-count">14篇</span>
+      </div>
+      <div class="date-articles">
+        
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-top">74分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/professional-issues/language-communication-deaf-hard-of-hearing-children/" target="_blank" rel="noopener">Language and Communication of Deaf and Hard of Hearing Children</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:14</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 50</span>
+  </div>
+  <a href="https://www.asha.org/practice-portal/professional-issues/language-communication-deaf-hard-of-hearing-children/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/assistants-certification-program/" target="_blank" rel="noopener">Audiology &amp; SLP Assistants</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:14</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/assistants-certification-program/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/" target="_blank" rel="noopener">American Speech-Language-Hearing Association</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:14</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/professional-issues/counseling-in-audiology-and-speech-language-pathology/" target="_blank" rel="noopener">Counseling in Audiology and Speech-Language Pathology</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:14</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/practice-portal/professional-issues/counseling-in-audiology-and-speech-language-pathology/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/professional-issues/multilingual-service-delivery/" target="_blank" rel="noopener">Multilingual Service Delivery in Audiology and Speech-Language Pathology</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:14</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/practice-portal/professional-issues/multilingual-service-delivery/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/policy/ps2004-00218/" target="_blank" rel="noopener">Auditory Integration Training</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:14</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/policy/ps2004-00218/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/clinical-topics/hearing-loss-in-children/" target="_blank" rel="noopener">hearing impairment</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/practice-portal/clinical-topics/hearing-loss-in-children/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/2a8c13cc-ecf5-4fbb-891f-3f986aacdd35" target="_blank" rel="noopener">Hearing Loss (Newborn) Evidence Map</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/2a8c13cc-ecf5-4fbb-891f-3f986aacdd35" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/2c9112ba-f296-4bb7-8b83-8a8b33585e9d" target="_blank" rel="noopener">Hearing Loss (School-Age) Evidence Map</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/2c9112ba-f296-4bb7-8b83-8a8b33585e9d" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/04c03287-8b12-ed11-8135-005056834e2b" target="_blank" rel="noopener">Language and Communication of Deaf or Hard of Hearing (DHH) Individuals Evidence Map</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://apps.asha.org/EvidenceMaps/Maps/LandingPage/04c03287-8b12-ed11-8135-005056834e2b" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/hearing-related-topics-terminology-guidance/" target="_blank" rel="noopener">hearing-related topics: terminology guidance</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 权威指南⭐⭐⭐⭐，可直接指导临床实践。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/practice-portal/hearing-related-topics-terminology-guidance/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/practice-portal/professional-issues/newborn-hearing-screening/" target="_blank" rel="noopener">Newborn Hearing Screening</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/practice-portal/professional-issues/newborn-hearing-screening/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/policy/sp2018-00353/" target="_blank" rel="noopener">Scope of Practice in Audiology</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/policy/sp2018-00353/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-high">72分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.asha.org/aud/pei/" target="_blank" rel="noopener">audiology patient education handouts</a></h3>
+  <p class="card-summary">（点击阅读原文）</p>
+  <div class="card-reason">💡 ASHA认证专业内容⭐⭐⭐⭐，值得细读。</div>
+  <div class="card-footer">
+    <span>📖 ASHA</span>
+    <span>📅 04月07日 15:15</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 90</span>
+    <span class="score-dim ok">权威 88</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.asha.org/aud/pei/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+      </div>
+    </div>
+    <div class="date-group">
+      <div class="date-label-row">
+        <span class="date-label">📅 03月24日</span>
+        <span class="date-count">1篇</span>
+      </div>
+      <div class="date-articles">
+        
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-mid">67分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.who.int/news/item/24-03-2026-who-recommends-new-diagnostic-tools-to-help-end-tb" target="_blank" rel="noopener">WHO recommends new diagnostic tools to help end TB</a></h3>
+  <p class="card-summary">On World TB Day, the World Health Organization (WHO) is urging countries to accelerate action to end tuberculosis (TB) and expand access to lifesaving services by using new innovations such as  diagnostic tests that can be used near the point-of-care and tongue swabs that can help detect the disease</p>
+  <div class="card-reason">💡 来自WHO/NIH/CDC的权威资料⭐⭐⭐⭐，临床参考价值高。</div>
+  <div class="card-footer">
+    <span>📖 WHO</span>
+    <span>📅 03月24日 00:00</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 80</span>
+    <span class="score-dim ok">权威 95</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.who.int/news/item/24-03-2026-who-recommends-new-diagnostic-tools-to-help-end-tb" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+      </div>
+    </div>
+    <div class="date-group">
+      <div class="date-label-row">
+        <span class="date-label">📅 02月23日</span>
+        <span class="date-count">1篇</span>
+      </div>
+      <div class="date-articles">
+        
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-mid">67分</span>
+  </div>
+  <h3 class="card-title"><a href="https://www.who.int/news/item/23-02-2026-attacks-on-ukraine-s-health-care-increased-by-20-in-2025" target="_blank" rel="noopener">Attacks on Ukraine’s health care increased by 20% in 2025</a></h3>
+  <p class="card-summary">As Ukraine enters the fifth year of full-scale war, its people have endured the highest number of attacks on their health care in 2025 – increasing by nearly 20% compared to 2024.Since the beginning of the full-scale war on 24 February 2022, WHO has documented at least 2881 attacks on health c</p>
+  <div class="card-reason">💡 早期识别要点，家长和治疗师都需要掌握。</div>
+  <div class="card-footer">
+    <span>📖 WHO</span>
+    <span>📅 02月23日 00:00</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 80</span>
+    <span class="score-dim ok">权威 95</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://www.who.int/news/item/23-02-2026-attacks-on-ukraine-s-health-care-increased-by-20-in-2025" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+      </div>
+    </div>
+    <div class="date-group">
+      <div class="date-label-row">
+        <span class="date-label">📅 01月01日</span>
+        <span class="date-count">1篇</span>
+      </div>
+      <div class="date-articles">
+        
+<div class="article-card">
+  <div class="card-header">
+    <span class="cat-badge cat-hearing">👂 听力障碍</span>
+    <span class="score-badge score-mid">67分</span>
+  </div>
+  <h3 class="card-title"><a href="https://pubmed.ncbi.nlm.nih.gov/41983811/" target="_blank" rel="noopener">Post-masking in cortical auditory evoked potentials following acoustically controlled auditory training: a case report.</a></h3>
+  <p class="card-summary">期刊：Codas（2026）| 作者：Gonçalves MC, Menezes PL, Batista CHA</p>
+  <div class="card-reason">💡 来自WHO/NIH/CDC的权威资料⭐⭐⭐⭐，临床参考价值高。</div>
+  <div class="card-footer">
+    <span>📖 Codas</span>
+    <span>📅 01月01日 00:00</span>
+  </div>
+  <div class="card-scores">
+    <span class="score-dim ">实用 50</span>
+    <span class="score-dim ok">前沿 70</span>
+    <span class="score-dim ok">权威 92</span>
+    <span class="score-dim">适用 40</span>
+  </div>
+  <a href="https://pubmed.ncbi.nlm.nih.gov/41983811/" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+</div>
+      </div>
+    </div></div>
     </section>
   </div>
-</main>
-
+</div>
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p>小螺号康复精选 · <span id="footerTime">—</span></p>
-    <p>信息来源：ASHA · NIH/NIDCD · CDC · WHO</p>
+  <div class="footer-inner">
+    <p>小螺号康复精选 · 每日自动抓取 · 更新时间：2026-05-07 15:15</p>
+    <p>信息来源：WHO · ASHA · NIH/NIDCD · CDC · PubMed · 中国康复医学会</p>
   </div>
 </footer>
-
-<script src="data.js"></script>
-<script>
-const DATA = window.REHAB_HOT_DATA;
-const CAT = 'hearing';
-const CAT_NAME = '听力障碍';
-const CAT_ICON = '👂';
-
-function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function scoreClass(s) { return s>=74?'score-top':s>=70?'score-high':'score-mid'; }
-function catBadge(cat) {
-  const m={articulation:'🔤',language:'💬',hearing:'👂',autism:'🌟'};
-  const n={articulation:'构音',language:'语言',hearing:'听力',autism:'孤独'};
-  return `<span class="cat-badge cat-${cat}">${m[cat]||'📌'} ${n[cat]||cat}</span>`;
-}
-
-function articleCard(art) {
-  const s = art.scores||{};
-  return `<article class="article-card ${art.is_selected?'card-selected':''}">
-    <div class="card-header">${catBadge(art.category)}<span class="score-badge ${scoreClass(art.final_score)}">${art.final_score}</span></div>
-    <h3 class="card-title"><a href="${esc(art.url)}" target="_blank" rel="noopener">${esc(art.title)}</a></h3>
-    <p class="card-summary">${esc(art.summary)}</p>
-    ${art.reason?`<p class="card-reason">💡 ${esc(art.reason)}</p>`:''}
-    <div class="card-footer"><span class="card-source">${esc(art.source)}</span><span class="card-date">${esc(art.date_label)} ${esc(art.time_label)}</span></div>
-    <div class="card-scores">
-      <span class="score-dim ${s.实用度>=70?'ok':''}">实用 ${s.实用度||0}</span>
-      <span class="score-dim ${s.前沿度>=70?'ok':''}">前沿 ${s.前沿度||0}</span>
-      <span class="score-dim ${s.权威度>=85?'ok':''}">权威 ${s.权威度||0}</span>
-      <span class="score-dim ${s.适用面>=60?'ok':''}">适用 ${s.适用面||0}</span>
-    </div>
-    <a href="${esc(art.url)}" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
-  </article>`;
-}
-
-function render() {
-  const cats = DATA.categories||{};
-  const allArts = cats[CAT]?.items||[];
-  document.getElementById('badgeArt').textContent  = cats.articulation?.total||0;
-  document.getElementById('badgeLang').textContent = cats.language?.total||0;
-  document.getElementById('badgeHear').textContent  = cats.hearing?.total||0;
-  document.getElementById('badgeAut').textContent   = cats.autism?.total||0;
-  document.getElementById('footerTime').textContent = DATA.updated||'';
-
-  const selected = allArts.filter(a=>a.is_selected).slice(0,6);
-  if (selected.length > 0) {
-    document.getElementById('selectedSection').style.display='block';
-    document.getElementById('selectedGrid').innerHTML = selected.map(articleCard).join('');
-  }
-
-  const byDate={};
-  for(const a of allArts){const d=a.date_label||'其他';(byDate[d]=byDate[d]||[]).push(a);}
-  const dates=Object.keys(byDate).sort((a,b)=>b.localeCompare(a));
-  let html='';
-  for(const date of dates){
-    html+=`<div class="date-group"><div class="date-label-row"><span class="date-label">📅 ${esc(date)}</span><span class="date-count">${byDate[date].length}篇</span></div><div class="date-articles">${byDate[date].map(articleCard).join('')}</div></div>`;
-  }
-  document.getElementById('timelineList').innerHTML=html||'<p style="padding:40px;text-align:center;color:#888">暂无文章</p>';
-  document.getElementById('sectionTitle').textContent=`${CAT_ICON} ${CAT_NAME}（${allArts.length}篇）`;
-}
-
-function applyFilters() {
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  const allArts = (DATA.categories[CAT]?.items||[]);
-  const filtered = allArts.filter(a => {
-    if (!q) return true;
-    return (a.title+' '+a.summary+' '+(a.reason||'')).toLowerCase().includes(q);
-  });
-  const byDate={};
-  for(const a of filtered){const d=a.date_label||'其他';(byDate[d]=byDate[d]||[]).push(a);}
-  const dates=Object.keys(byDate).sort((a,b)=>b.localeCompare(a));
-  let html='';
-  for(const date of dates){
-    html+=`<div class="date-group"><div class="date-label-row"><span class="date-label">📅 ${esc(date)}</span><span class="date-count">${byDate[date].length}篇</span></div><div class="date-articles">${byDate[date].map(articleCard).join('')}</div></div>`;
-  }
-  document.getElementById('selectedSection').style.display='none';
-  document.getElementById('timelineList').innerHTML=html||'<p style="padding:40px;text-align:center;color:#888">未找到匹配</p>';
-  document.getElementById('sectionTitle').textContent=q?`🔍 搜索结果（${filtered.length}篇）`:`${CAT_ICON} ${CAT_NAME}（${filtered.length}篇）`;
-}
-
-document.getElementById('searchInput').addEventListener('input', applyFilters);
-render();
-</script>
 </body>
 </html>
