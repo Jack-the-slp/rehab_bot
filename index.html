@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小螺号康复精选 — 每日精选言语康复/语言发育迟缓/听力障碍/孤独症康复资讯</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐚</text></svg>">
+  <style>
+    /* Loading skeleton */
+    .skeleton { background: linear-gradient(90deg,#f0f0f0 25%,#e0e0e0 50%,#f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    .loading-msg { text-align: center; padding: 60px; color: #888; font-size: 16px; }
+  </style>
+</head>
+<body>
+
+<!-- 顶栏 -->
+<header class="site-header">
+  <div class="header-inner container">
+    <a href="index.html" class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 4C9.4 4 4 9.4 4 16s5.4 12 12 12 12-5.4 12-12S22.6 4 16 4z" fill="#C2185B" opacity=".15"/>
+        <path d="M16 8c-1.1 0-2 .9-2 2v6l-4 4h8l-4-4v-6c0-1.1-.9-2-2-2z" fill="#C2185B"/>
+        <path d="M10 20c0 3.3 2.7 6 6 6s6-2.7 6-6H10z" fill="#C2185B" opacity=".7"/>
+      </svg>
+      <span>小螺号康复精选</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html" class="active">今日精选</a>
+      <a href="articulation.html">构音障碍</a>
+      <a href="language.html">语言发育</a>
+      <a href="hearing.html">听力障碍</a>
+      <a href="autism.html">孤独症</a>
+      <a href="about.html">关于</a>
+    </nav>
+    <div class="header-stats" id="headerStats">
+      <span class="stat-item">🏆 <span id="statSelected">—</span> 精选</span>
+      <span class="stat-item">📚 <span id="statTotal">—</span> 资讯</span>
+      <span class="stat-item">🕐 <span id="statTime">—</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- 统计横幅 -->
+<div class="stats-bar" id="statsBar">
+  <div class="container stats-inner">
+    <div class="stat-pill" style="background:#fff3e0"><span class="stat-num" id="sArt">—</span><span class="stat-label">构音障碍</span></div>
+    <div class="stat-pill" style="background:#e3f2fd"><span class="stat-num" id="sLang">—</span><span class="stat-label">语言发育</span></div>
+    <div class="stat-pill" style="background:#e8f5e9"><span class="stat-num" id="sHear">—</span><span class="stat-label">听力障碍</span></div>
+    <div class="stat-pill" style="background:#f3e5f5"><span class="stat-num" id="sAut">—</span><span class="stat-label">孤独症</span></div>
+    <div class="stat-pill" style="background:#fce4ec"><span class="stat-num" id="sSrc">—</span><span class="stat-label">个来源</span></div>
+  </div>
+</div>
+
+<!-- 主内容 -->
+<main class="main-content container">
+  <div class="content-grid">
+
+    <!-- 左侧栏 -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">📂 分类浏览</h3>
+        <ul class="sidebar-nav" id="sidebarNav">
+          <li><a href="index.html" class="active">🏠 今日精选</a></li>
+          <li><a href="articulation.html">🔤 构音障碍 <span class="badge" id="badgeArt">0</span></a></li>
+          <li><a href="language.html">💬 语言发育迟缓 <span class="badge" id="badgeLang">0</span></a></li>
+          <li><a href="hearing.html">👂 听力障碍 <span class="badge" id="badgeHear">0</span></a></li>
+          <li><a href="autism.html">🌟 孤独症谱系 <span class="badge" id="badgeAut">0</span></a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">🏆 评分说明</h3>
+        <div class="score-legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#e53935"></span> ≥74 精选</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#fb8c00"></span> 70-73 优质</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#43a047"></span> 65-69 参考</div>
+        </div>
+        <div class="sidebar-desc">五维评分：<br>实用度25% · 前沿度20%<br>权威度25% · 适用面15%<br>通俗度15%</div>
+      </div>
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">📡 主要来源</h3>
+        <div class="source-list">
+          <div class="source-item">⭐ WHO</div>
+          <div class="source-item">⭐ ASHA</div>
+          <div class="source-item">⭐ NIH/NIDCD</div>
+          <div class="source-item">⭐ CDC</div>
+          <div class="source-item">⭐ PubMed</div>
+          <div class="source-item">中国康复医学会</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 右侧文章列表 -->
+    <section class="articles-area" id="articlesArea">
+      <div class="articles-header">
+        <h2 class="section-title" id="sectionTitle">🏆 今日精选</h2>
+        <div class="articles-controls">
+          <input type="text" id="searchInput" class="search-input" placeholder="搜索关键词...">
+          <select id="filterSelect" class="filter-select">
+            <option value="">全部分类</option>
+            <option value="articulation">构音障碍</option>
+            <option value="language">语言发育迟缓</option>
+            <option value="hearing">听力障碍</option>
+            <option value="autism">孤独症谱系</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 精选区 -->
+      <div id="selectedSection" class="selected-grid" style="display:none">
+        <h3 class="subsection-title">⭐ 精选推荐</h3>
+        <div id="selectedGrid" class="articles-grid"></div>
+      </div>
+
+      <!-- 全部文章 -->
+      <div id="timelineSection">
+        <h3 class="subsection-title" id="timelineTitle">📅 最新资讯</h3>
+        <div id="timelineList" class="timeline-list"></div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- 页脚 -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>小螺号康复精选 · 每日自动抓取 · <span id="footerTime">—</span></p>
+    <p>信息来源：WHO · ASHA · NIH/NIDCD · CDC · PubMed · 中国康复医学会</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+// ═══════════════════════════════════════════════════
+// 渲染引擎
+// ═══════════════════════════════════════════════════
+const DATA = window.REHAB_HOT_DATA;
+
+function esc(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+function scoreClass(score) {
+  if (score >= 74) return 'score-top';
+  if (score >= 70) return 'score-high';
+  return 'score-mid';
+}
+
+function scoreLabel(score) {
+  if (score >= 74) return '精选';
+  if (score >= 70) return '优质';
+  return '参考';
+}
+
+function catBadge(cat) {
+  const map = {articulation:'🔤',language:'💬',hearing:'👂',autism:'🌟'};
+  const names = {articulation:'构音',language:'语言',hearing:'听力',autism:'孤独'};
+  return `<span class="cat-badge cat-${cat}">${map[cat]||'📌'} ${names[cat]||cat}</span>`;
+}
+
+function articleCard(art) {
+  const s = art.scores || {};
+  return `
+  <article class="article-card ${art.is_selected ? 'card-selected' : ''}">
+    <div class="card-header">
+      ${catBadge(art.category)}
+      <span class="score-badge ${scoreClass(art.final_score)}">${art.final_score}</span>
+    </div>
+    <h3 class="card-title"><a href="${esc(art.url)}" target="_blank" rel="noopener">${esc(art.title)}</a></h3>
+    <p class="card-summary">${esc(art.summary)}</p>
+    ${art.reason ? `<p class="card-reason">💡 ${esc(art.reason)}</p>` : ''}
+    <div class="card-footer">
+      <span class="card-source">${esc(art.source)}</span>
+      <span class="card-date">${esc(art.date_label)} ${esc(art.time_label)}</span>
+    </div>
+    <div class="card-scores">
+      <span title="实用度" class="score-dim ${s.实用度>=70?'ok':''}">实用 ${s.实用度||0}</span>
+      <span title="前沿度" class="score-dim ${s.前沿度>=70?'ok':''}">前沿 ${s.前沿度||0}</span>
+      <span title="权威度" class="score-dim ${s.权威度>=85?'ok':''}">权威 ${s.权威度||0}</span>
+      <span title="适用面" class="score-dim ${s.适用面>=60?'ok':''}">适用 ${s.适用面||0}</span>
+    </div>
+    <a href="${esc(art.url)}" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+  </article>`;
+}
+
+function renderAll() {
+  const arts = DATA.articles || [];
+  const cats = DATA.categories || {};
+
+  // 更新统计
+  document.getElementById('statSelected').textContent = DATA.selected_count || 0;
+  document.getElementById('statTotal').textContent = DATA.total || arts.length;
+  document.getElementById('statTime').textContent = DATA.updated || '';
+  document.getElementById('footerTime').textContent = DATA.updated || '';
+
+  const art  = cats.articulation || {};
+  const lang = cats.language || {};
+  const hear = cats.hearing || {};
+  const aut  = cats.autism || {};
+  document.getElementById('sArt').textContent  = art.total  || 0;
+  document.getElementById('sLang').textContent  = lang.total || 0;
+  document.getElementById('sHear').textContent  = hear.total || 0;
+  document.getElementById('sAut').textContent   = aut.total  || 0;
+  document.getElementById('sSrc').textContent   = DATA.sources_count || 0;
+
+  document.getElementById('badgeArt').textContent  = art.total  || 0;
+  document.getElementById('badgeLang').textContent = lang.total || 0;
+  document.getElementById('badgeHear').textContent = hear.total || 0;
+  document.getElementById('badgeAut').textContent  = aut.total  || 0;
+
+  // 精选文章
+  const selected = arts.filter(a => a.is_selected).slice(0, 6);
+  if (selected.length > 0) {
+    document.getElementById('selectedSection').style.display = 'block';
+    document.getElementById('selectedGrid').innerHTML =
+      selected.map(articleCard).join('');
+  }
+
+  // 全部文章（按日期分组）
+  const byDate = {};
+  for (const a of arts) {
+    const d = a.date_label || '其他';
+    if (!byDate[d]) byDate[d] = [];
+    byDate[d].push(a);
+  }
+
+  const sortedDates = Object.keys(byDate).sort((a, b) => {
+    // 按日期字符串排序（最新的在前面）
+    return b.localeCompare(a);
+  });
+
+  let timelineHTML = '';
+  for (const date of sortedDates) {
+    timelineHTML += `<div class="date-group">
+      <div class="date-label-row"><span class="date-label">📅 ${esc(date)}</span><span class="date-count">${byDate[date].length}篇</span></div>
+      <div class="date-articles">${byDate[date].map(articleCard).join('')}</div>
+    </div>`;
+  }
+  document.getElementById('timelineList').innerHTML = timelineHTML;
+}
+
+// 搜索 + 过滤
+function applyFilters() {
+  const q    = document.getElementById('searchInput').value.trim().toLowerCase();
+  const cat  = document.getElementById('filterSelect').value;
+  const arts = DATA.articles || [];
+  const filtered = arts.filter(a => {
+    if (cat && a.category !== cat) return false;
+    if (q) {
+      const text = (a.title + ' ' + a.summary + ' ' + a.source + ' ' + (a.reason||'')).toLowerCase();
+      if (!text.includes(q)) return false;
+    }
+    return true;
+  });
+
+  // 重建时间线
+  const byDate = {};
+  for (const a of filtered) {
+    const d = a.date_label || '其他';
+    if (!byDate[d]) byDate[d] = [];
+    byDate[d].push(a);
+  }
+
+  const sortedDates = Object.keys(byDate).sort((a, b) => b.localeCompare(a));
+  let html = '';
+  for (const date of sortedDates) {
+    html += `<div class="date-group">
+      <div class="date-label-row"><span class="date-label">📅 ${esc(date)}</span><span class="date-count">${byDate[date].length}篇</span></div>
+      <div class="date-articles">${byDate[date].map(articleCard).join('')}</div>
+    </div>`;
+  }
+
+  const selectedSection = document.getElementById('selectedSection');
+  if (q || cat) {
+    selectedSection.style.display = 'none';
+  } else {
+    selectedSection.style.display = filtered.filter(a=>a.is_selected).length > 0 ? 'block' : 'none';
+  }
+
+  document.getElementById('timelineList').innerHTML = html || '<p style="padding:40px;text-align:center;color:#888">未找到匹配的文章</p>';
+  document.getElementById('sectionTitle').textContent = (q || cat) ? `🔍 搜索结果（${filtered.length}篇）` : '🏆 今日精选';
+}
+
+document.getElementById('searchInput').addEventListener('input', applyFilters);
+document.getElementById('filterSelect').addEventListener('change', applyFilters);
+
+// 高亮侧边栏
+(function highlightSidebar() {
+  const navs = document.querySelectorAll('.sidebar-nav a');
+  navs.forEach(a => {
+    if (a.getAttribute('href') === 'index.html') {
+      a.classList.toggle('active', true);
+    }
+  });
+})();
+
+renderAll();
+</script>
+</body>
+</html>

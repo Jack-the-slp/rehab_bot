@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于 — 小螺号康复精选</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .about-wrap { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+    .about-card { background: #fff; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+    .about-card h2 { color: #C2185B; margin-bottom: 16px; font-size: 20px; }
+    .about-card p { color: #555; line-height: 1.8; margin-bottom: 12px; }
+    .about-card ul { padding-left: 24px; color: #555; line-height: 2; }
+    .about-card li strong { color: #C2185B; }
+    .source-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    .source-table th { background: #C2185B; color: #fff; padding: 10px 16px; text-align: left; border-radius: 8px 8px 0 0; }
+    .source-table td { padding: 10px 16px; border-bottom: 1px solid #eee; }
+    .source-table tr:last-child td { border-bottom: none; }
+    .star { color: #f5c518; }
+    .score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-top: 16px; }
+    .score-chip { background: #fce4ec; border-radius: 8px; padding: 12px; text-align: center; }
+    .score-chip .pct { font-size: 24px; font-weight: 700; color: #C2185B; }
+    .score-chip .label { font-size: 13px; color: #888; margin-top: 4px; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a href="index.html" class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M16 8c-1.1 0-2 .9-2 2v6l-4 4h8l-4-4v-6c0-1.1-.9-2-2-2z" fill="#C2185B"/>
+        <path d="M10 20c0 3.3 2.7 6 6 6s6-2.7 6-6H10z" fill="#C2185B" opacity=".7"/>
+      </svg>
+      <span>小螺号康复精选</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">今日精选</a>
+      <a href="articulation.html">构音障碍</a>
+      <a href="language.html">语言发育</a>
+      <a href="hearing.html">听力障碍</a>
+      <a href="autism.html" class="active">孤独症</a>
+      <a href="about.html">关于</a>
+    </nav>
+  </div>
+</header>
+
+<main class="main-content container">
+  <div class="about-wrap">
+
+    <div class="about-card">
+      <h2>🐚 关于小螺号康复精选</h2>
+      <p>小螺号康复精选（RehabHot）是一个面向言语治疗师、康复从业者和特殊儿童家长的<strong>每日自动资讯聚合平台</strong>。</p>
+      <p>系统每日从以下权威来源自动抓取最新内容，通过五维评分算法精选最有价值的文章，帮助您节省信息筛选时间，专注于真正重要的事情——帮助孩子康复。</p>
+      <p><strong>覆盖领域：</strong>构音障碍 · 语言发育迟缓 · 听力障碍 · 孤独症谱系障碍</p>
+    </div>
+
+    <div class="about-card">
+      <h2>📡 数据来源</h2>
+      <table class="source-table">
+        <thead><tr><th>来源</th><th>类型</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td><span class="star">⭐⭐⭐⭐⭐</span> WHO</td><td>国际组织</td><td>听力/耳科相关政策与指南</td></tr>
+          <tr><td><span class="star">⭐⭐⭐⭐⭐</span> ASHA</td><td>学会官网</td><td>构音/语言/听力/孤独症Practice Portal</td></tr>
+          <tr><td><span class="star">⭐⭐⭐⭐⭐</span> NIH/NIDCD</td><td>政府机构</td><td>听力平衡/言语语言研究</td></tr>
+          <tr><td><span class="star">⭐⭐⭐⭐⭐</span> NIMH</td><td>政府机构</td><td>孤独症/神经发育障碍研究</td></tr>
+          <tr><td><span class="star">⭐⭐⭐⭐⭐</span> CDC</td><td>政府机构</td><td>儿童发育/听力筛查指南</td></tr>
+          <tr><td><span class="star">⭐⭐⭐⭐</span> PubMed</td><td>学术数据库</td><td>最新同行评审研究论文</td></tr>
+          <tr><td><span class="star">⭐⭐⭐⭐</span> arXiv</td><td>预印本</td><td>言语/语言计算方向最新研究</td></tr>
+          <tr><td><span class="star">⭐⭐⭐</span> 中国康复医学会</td><td>行业协会</td><td>行业标准、培训通知</td></tr>
+          <tr><td><span class="star">⭐⭐⭐</span> 中国听力语言康复研究中心</td><td>科研机构</td><td>听力障碍研究</td></tr>
+          <tr><td><span class="star">⭐⭐⭐</span> 中国残疾人康复协会</td><td>行业协会</td><td>孤独症/康复政策</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="about-card">
+      <h2>🏆 五维评分体系</h2>
+      <p>每篇文章根据以下五个维度评分，综合得出最终推荐分：</p>
+      <div class="score-grid">
+        <div class="score-chip"><div class="pct">25%</div><div class="label">实用度</div></div>
+        <div class="score-chip"><div class="pct">20%</div><div class="label">前沿度</div></div>
+        <div class="score-chip"><div class="pct">25%</div><div class="label">权威度</div></div>
+        <div class="score-chip"><div class="pct">15%</div><div class="label">适用面</div></div>
+        <div class="score-chip"><div class="pct">15%</div><div class="label">通俗度</div></div>
+      </div>
+      <ul style="margin-top: 20px">
+        <li><strong>实用度 25%</strong> — 家庭干预方案、临床策略、工具模板</li>
+        <li><strong>前沿度 20%</strong> — 近期发表（30天内最高），保证内容时效性</li>
+        <li><strong>权威度 25%</strong> — 来源机构评级（WHO=95 / ASHA=88 / PubMed=87）</li>
+        <li><strong>适用面 15%</strong> — 覆盖儿童/家长/治疗师范围</li>
+        <li><strong>通俗度 15%</strong> — 摘要可读性，无过度专业术语</li>
+      </ul>
+      <p style="margin-top:16px"><strong>评级标准：</strong>≥74分 = 🏆精选推荐 | 70-73分 = 优质内容 | 65-69分 = 参考阅读</p>
+    </div>
+
+    <div class="about-card">
+      <h2>🤖 技术架构</h2>
+      <ul>
+        <li><strong>爬虫</strong>：Python（urllib + BeautifulSoup + feedparser），每次运行约20-30秒，可部署至云服务器或 Cloudflare Workers</li>
+        <li><strong>数据存储</strong>：JSON文件（articles.json + data.js），直接被前端引用，无需后端</li>
+        <li><strong>前端</strong>：纯静态 HTML/CSS/JS，支持全文搜索 + 分类过滤</li>
+        <li><strong>部署</strong>：可部署至 GitHub Pages / Cloudflare Pages / 任意静态托管</li>
+        <li><strong>自动化</strong>：配合 cron job 或 Cloudflare Workers Cron，每日 06:00 / 18:00 自动抓取更新</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>小螺号康复精选 · 每日自动更新</p>
+    <p>made by 李老师 &amp; AI</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+if (window.REHAB_HOT_DATA) {
+  document.querySelector('.footer-inner p:first-child').textContent =
+    '小螺号康复精选 · 每日自动更新 · ' + window.REHAB_HOT_DATA.updated;
+}
+</script>
+
+</body>
+</html>

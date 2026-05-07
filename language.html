@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>语言发育迟缓 — 小螺号康复精选</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a href="index.html" class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M16 8c-1.1 0-2 .9-2 2v6l-4 4h8l-4-4v-6c0-1.1-.9-2-2-2z" fill="#C2185B"/>
+        <path d="M10 20c0 3.3 2.7 6 6 6s6-2.7 6-6H10z" fill="#C2185B" opacity=".7"/>
+      </svg>
+      <span>小螺号康复精选</span>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">今日精选</a>
+      <a href="language.html" class="active">构音障碍</a>
+      <a href="language.html">语言发育</a>
+      <a href="hearing.html">听力障碍</a>
+      <a href="autism.html">孤独症</a>
+      <a href="about.html">关于</a>
+    </nav>
+  </div>
+</header>
+
+<main class="main-content container">
+  <div class="content-grid">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">📂 分类浏览</h3>
+        <ul class="sidebar-nav">
+          <li><a href="index.html">🏠 今日精选</a></li>
+          <li><a href="language.html" class="active">🔤 构音障碍 <span class="badge" id="badgeArt">0</span></a></li>
+          <li><a href="language.html">💬 语言发育迟缓 <span class="badge" id="badgeLang">0</span></a></li>
+          <li><a href="hearing.html">👂 听力障碍 <span class="badge" id="badgeHear">0</span></a></li>
+          <li><a href="autism.html">🌟 孤独症谱系 <span class="badge" id="badgeAut">0</span></a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">🔤 语言发育迟缓专题</h3>
+        <div class="sidebar-desc">
+          涵盖：语言发育迟缓、DLD/SLI、词汇/语法/语用障碍、表达性/接受性语言障碍、读写障碍等。
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">📡 主要来源</h3>
+        <div class="source-list">
+          <div class="source-item">⭐ ASHA Practice Portal</div>
+          <div class="source-item">⭐ PubMed</div>
+          <div class="source-item">⭐ JSLHR</div>
+          <div class="source-item">中国康复医学会</div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="articles-area">
+      <div class="articles-header">
+        <h2 class="section-title" id="sectionTitle">🔤 构音障碍</h2>
+        <div class="articles-controls">
+          <input type="text" id="searchInput" class="search-input" placeholder="搜索...">
+        </div>
+      </div>
+      <div id="selectedSection" class="selected-grid" style="display:none">
+        <h3 class="subsection-title">⭐ 精选推荐</h3>
+        <div id="selectedGrid" class="articles-grid"></div>
+      </div>
+      <h3 class="subsection-title" id="timelineTitle">📅 全部资讯</h3>
+      <div id="timelineList" class="timeline-list"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>小螺号康复精选 · <span id="footerTime">—</span></p>
+    <p>信息来源：ASHA Practice Portal · PubMed · 中国康复医学会</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+const DATA = window.REHAB_HOT_DATA;
+const CAT = 'language';
+const CAT_NAME = '语言发育迟缓';
+const CAT_ICON = '💬';
+
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function scoreClass(s) { return s>=74?'score-top':s>=70?'score-high':'score-mid'; }
+function catBadge(cat) {
+  const m={articulation:'🔤',language:'💬',hearing:'👂',autism:'🌟'};
+  const n={articulation:'构音',language:'语言',hearing:'听力',autism:'孤独'};
+  return `<span class="cat-badge cat-${cat}">${m[cat]||'📌'} ${n[cat]||cat}</span>`;
+}
+
+function articleCard(art) {
+  const s = art.scores||{};
+  return `<article class="article-card ${art.is_selected?'card-selected':''}">
+    <div class="card-header">${catBadge(art.category)}<span class="score-badge ${scoreClass(art.final_score)}">${art.final_score}</span></div>
+    <h3 class="card-title"><a href="${esc(art.url)}" target="_blank" rel="noopener">${esc(art.title)}</a></h3>
+    <p class="card-summary">${esc(art.summary)}</p>
+    ${art.reason?`<p class="card-reason">💡 ${esc(art.reason)}</p>`:''}
+    <div class="card-footer"><span class="card-source">${esc(art.source)}</span><span class="card-date">${esc(art.date_label)} ${esc(art.time_label)}</span></div>
+    <div class="card-scores">
+      <span class="score-dim ${s.实用度>=70?'ok':''}">实用 ${s.实用度||0}</span>
+      <span class="score-dim ${s.前沿度>=70?'ok':''}">前沿 ${s.前沿度||0}</span>
+      <span class="score-dim ${s.权威度>=85?'ok':''}">权威 ${s.权威度||0}</span>
+      <span class="score-dim ${s.适用面>=60?'ok':''}">适用 ${s.适用面||0}</span>
+    </div>
+    <a href="${esc(art.url)}" target="_blank" rel="noopener" class="read-btn">阅读原文 →</a>
+  </article>`;
+}
+
+function render() {
+  const cats = DATA.categories||{};
+  const allArts = cats[CAT]?.items||[];
+  document.getElementById('badgeArt').textContent  = cats.articulation?.total||0;
+  document.getElementById('badgeLang').textContent = cats.language?.total||0;
+  document.getElementById('badgeHear').textContent  = cats.hearing?.total||0;
+  document.getElementById('badgeAut').textContent   = cats.autism?.total||0;
+  document.getElementById('footerTime').textContent = DATA.updated||'';
+
+  const selected = allArts.filter(a=>a.is_selected).slice(0,6);
+  if (selected.length > 0) {
+    document.getElementById('selectedSection').style.display='block';
+    document.getElementById('selectedGrid').innerHTML = selected.map(articleCard).join('');
+  }
+
+  const byDate={};
+  for(const a of allArts){const d=a.date_label||'其他';(byDate[d]=byDate[d]||[]).push(a);}
+  const dates=Object.keys(byDate).sort((a,b)=>b.localeCompare(a));
+  let html='';
+  for(const date of dates){
+    html+=`<div class="date-group"><div class="date-label-row"><span class="date-label">📅 ${esc(date)}</span><span class="date-count">${byDate[date].length}篇</span></div><div class="date-articles">${byDate[date].map(articleCard).join('')}</div></div>`;
+  }
+  document.getElementById('timelineList').innerHTML=html||'<p style="padding:40px;text-align:center;color:#888">暂无文章</p>';
+  document.getElementById('sectionTitle').textContent=`${CAT_ICON} ${CAT_NAME}（${allArts.length}篇）`;
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const allArts = (DATA.categories[CAT]?.items||[]);
+  const filtered = allArts.filter(a => {
+    if (!q) return true;
+    return (a.title+' '+a.summary+' '+(a.reason||'')).toLowerCase().includes(q);
+  });
+  const byDate={};
+  for(const a of filtered){const d=a.date_label||'其他';(byDate[d]=byDate[d]||[]).push(a);}
+  const dates=Object.keys(byDate).sort((a,b)=>b.localeCompare(a));
+  let html='';
+  for(const date of dates){
+    html+=`<div class="date-group"><div class="date-label-row"><span class="date-label">📅 ${esc(date)}</span><span class="date-count">${byDate[date].length}篇</span></div><div class="date-articles">${byDate[date].map(articleCard).join('')}</div></div>`;
+  }
+  document.getElementById('selectedSection').style.display='none';
+  document.getElementById('timelineList').innerHTML=html||'<p style="padding:40px;text-align:center;color:#888">未找到匹配</p>';
+  document.getElementById('sectionTitle').textContent=q?`🔍 搜索结果（${filtered.length}篇）`:`${CAT_ICON} ${CAT_NAME}（${filtered.length}篇）`;
+}
+
+document.getElementById('searchInput').addEventListener('input', applyFilters);
+render();
+</script>
+</body>
+</html>
